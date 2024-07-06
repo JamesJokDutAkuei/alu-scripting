@@ -1,20 +1,15 @@
 #!/usr/bin/python3
-"""DOC"""
+"""Return number of subscribers for a given subreddit"""
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """DOC"""
-    reddit_url = "https://www.reddit.com/r/{}/about.json" \
+    """Return the number of subscribers """
+    url = "https://www.reddit.com/r/{}/about.json" \
         .format(subreddit)
-
-    header = {'User-agent': 'Mozilla/5.0'}
-    response = requests.get(reddit_url,
-                            headers=header
-                            )
-
+    headers = {'User-Agent': 'My User Agent 1.0'}
+    response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        data = response.json()['data']
-        subs = data['subscribers']
-        return subs
+        return response.json().get('data') \
+            .get('subscribers')
     return 0
