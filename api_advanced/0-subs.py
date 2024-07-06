@@ -18,7 +18,8 @@ def number_of_subscribers(subreddit):
         subs = data['subscribers']
         return subs
     return 0
- """Test cases"""
+
+"""Test cases"""
 if __name__ == '__main__':
     import sys
 
